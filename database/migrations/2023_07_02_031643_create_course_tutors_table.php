@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('courses', function (Blueprint $table) {
-            $table->string('course_code', 10)->primary();
-            $table->string('course_title', 100);
-            $table->string('added_by'); // normally registered by admin
+        Schema::create('course_tutors', function (Blueprint $table) {
+            $table->id();
+            $table->uuid('user_id');
+            $table->unsignedBigInteger('course_info_id');
+            $table->string('is_cordinator', 1)->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('course_tutors');
     }
 };

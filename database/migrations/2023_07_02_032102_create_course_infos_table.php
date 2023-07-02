@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('courses', function (Blueprint $table) {
-            $table->string('course_code', 10)->primary();
-            $table->string('course_title', 100);
-            $table->string('added_by'); // normally registered by admin
+        Schema::create('course_infos', function (Blueprint $table) {
+            $table->unsignedBigInteger('course_info_id')->autoIncrement();
+            $table->string('course_code', 10);
+            $table->string('session', 9);
+            $table->string('introduction', 1000);
+            $table->string('grading_information', 1000)->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('course_infos');
     }
 };
