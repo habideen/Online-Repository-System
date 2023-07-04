@@ -35,10 +35,12 @@
             @csrf
 
             <div class="form-group">
-              <input type="text" autocomplete="off" name="email" id="email" placeholder="Username or email address">
+              <input type="text" value="admin@gmail.com" autocomplete="off" name="email" id="email"
+                placeholder="Username or email address">
             </div>
             <div class="form-group">
-              <input type="text" autocomplete="off" name="password" id="password" placeholder="Password">
+              <input type="password" value="11111111" autocomplete="off" name="password" id="password"
+                placeholder="Password">
             </div>
             <div class="row justify-content-between">
               <div class="col-auto form-group">

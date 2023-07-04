@@ -55,7 +55,6 @@ class LoginController extends Controller
         $account_type = strtolower(Auth::user()->account_type);
         $account_type = str_replace(' ', '', $account_type);
 
-
-        return redirect()->intended('/' . $account_type . '/dashboard');
+        return redirect('/' . $account_type . '/');
     } // login
 }
