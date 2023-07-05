@@ -71,7 +71,7 @@
 @import url(../vendor/metismenu/css/metisMenu.min.css);
 
 :root {
-  --primary: #2953E8;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #163dc8;
   --primary-dark: #0c216c;
@@ -18864,7 +18864,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 }
 
 :root {
-  --primary: #c62828;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #163dc8;
   --primary-dark: #0c216c;
@@ -19204,7 +19204,7 @@ The smaller device rules always should write below the bigger device rules
 Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Component
 */
 :root {
-  --primary: #2953E8;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #163dc8;
   --primary-dark: #0c216c;
@@ -19559,7 +19559,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-  --primary: #2953E8;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #163dc8;
   --primary-dark: #0c216c;
@@ -27037,7 +27037,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 [data-primary="color_2"] {
-  --primary: #143b64;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #0c223a;
   --primary-dark: black;
@@ -27053,7 +27053,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 [data-primary="color_3"] {
-  --primary: #2953E8;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #163dc8;
   --primary-dark: #0c216c;
@@ -27069,7 +27069,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 [data-primary="color_4"] {
-  --primary: #4527a0;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #331d77;
   --primary-dark: #100925;
@@ -27085,7 +27085,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 [data-primary="color_5"] {
-  --primary: #c62828;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #9c1f1f;
   --primary-dark: #470e0e;
@@ -27101,7 +27101,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 [data-primary="color_6"] {
-  --primary: #283593;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #1d276b;
   --primary-dark: #070a1b;
@@ -27117,7 +27117,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 [data-primary="color_7"] {
-  --primary: #7356f1;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #4c27ed;
   --primary-dark: #290da1;
@@ -27133,7 +27133,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 [data-primary="color_8"] {
-  --primary: #3695eb;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #167cd8;
   --primary-dark: #0c477c;
@@ -27149,7 +27149,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 [data-primary="color_9"] {
-  --primary: #00838f;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #00545c;
   --primary-dark: black;
@@ -27165,7 +27165,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 [data-primary="color_10"] {
-  --primary: #ff8f16;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #e27500;
   --primary-dark: #7c4000;
@@ -27181,7 +27181,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 [data-primary="color_11"] {
-  --primary: #6673fd;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #3445fc;
   --primary-dark: #0314c7;
@@ -27197,7 +27197,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 [data-primary="color_12"] {
-  --primary: #558b2f;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #3e6522;
   --primary-dark: #0f1908;
@@ -27213,7 +27213,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 [data-primary="color_13"] {
-  --primary: #2a2a2a;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #111111;
   --primary-dark: black;
@@ -27229,7 +27229,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 [data-primary="color_14"] {
-  --primary: #1367c8;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #0f4f99;
   --primary-dark: #061f3c;
@@ -27245,7 +27245,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 [data-primary="color_15"] {
-  --primary: #ed0b4c;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #bc093c;
   --primary-dark: #5b041d;
@@ -27277,7 +27277,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-  --primary: #2953E8;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #163dc8;
   --primary-dark: #0c216c;
@@ -27505,7 +27505,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-  --primary: #2953E8;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #163dc8;
   --primary-dark: #0c216c;
@@ -30171,7 +30171,7 @@ svg text {
 .form-control {
   border-radius: 0;
   background-color: #fff;
-  border: 1px solid #f0f1f5;
+  border: 1px solid #e1e1e1;
   color: #5b5e81;
   height: 56px;
   border-radius: 0.5rem;
@@ -30520,7 +30520,7 @@ form.profile-form .form-label {
 }
 
 :root {
-  --primary: #2953E8;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #163dc8;
   --primary-dark: #0c216c;
@@ -31246,7 +31246,7 @@ form.profile-form .form-label {
 }
 
 :root {
-  --primary: #2953E8;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #163dc8;
   --primary-dark: #0c216c;
@@ -32058,7 +32058,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-  --primary: #2953E8;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #163dc8;
   --primary-dark: #0c216c;
@@ -32135,7 +32135,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-  --primary: #2953E8;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #163dc8;
   --primary-dark: #0c216c;
@@ -32228,7 +32228,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 :root {
-  --primary: #2953E8;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #163dc8;
   --primary-dark: #0c216c;
@@ -44141,7 +44141,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 }
 
 :root {
-  --primary: #c62828;
+  --primary: #31005d;
   --secondary: #5C3799;
   --primary-hover: #163dc8;
   --primary-dark: #0c216c;

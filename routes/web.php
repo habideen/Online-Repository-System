@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Auth\LoginController;
@@ -39,7 +40,13 @@ Route::prefix('/admin')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index']);
         Route::get('/add_lecturer', [UsersController::class, 'addLecturerView']);
-        Route::post('/add_lecturer', [UsersController::class, 'addLecturer']);
+        Route::get('/edit_lecturer/{user_id}', [UsersController::class, 'addLecturerView']);
+        Route::post('/create_or_update_lecturer', [UsersController::class, 'addEditLecturer']);
         Route::get('/list/lecturers', [UsersController::class, 'listUsers']);
-        Route::get('/list/students', [UsersController::class, 'index']);
+        Route::get('/list/students', [UsersController::class, 'listUsers']);
+
+        Route::get('/add_course', [CourseController::class, 'addCourseView']);
+        Route::get('/edit_course/{course_id}', [CourseController::class, 'addCourseView']);
+        Route::post('/create_or_update_course', [CourseController::class, 'addEditCourse']);
+        Route::get('/list/students', [CourseController::class, 'listCourse']);
     });

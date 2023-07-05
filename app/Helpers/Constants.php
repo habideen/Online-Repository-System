@@ -1,6 +1,10 @@
 <?php
 
 
+define('TITLE', ['Mr', 'Mrs', 'Dr', 'Prof']);
+define('GENDER', ['M', 'F']);
+
+
 if (!function_exists('auth_messages')) {
   function auth_messages($message)
   {
