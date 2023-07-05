@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('courses', function (Blueprint $table) {
-            $table->string('course_code', 10)->primary();
-            $table->string('course_title', 100);
-            $table->uuid('added_by'); // normally registered by admin
+        Schema::create('sessions', function (Blueprint $table) {
+            $table->id();
+            $table->string('session', 9);
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('sessions');
     }
 };

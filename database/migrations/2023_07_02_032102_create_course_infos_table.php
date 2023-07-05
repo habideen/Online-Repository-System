@@ -15,7 +15,7 @@ return new class extends Migration
             $table->unsignedBigInteger('course_info_id')->autoIncrement();
             $table->string('course_code', 10);
             $table->string('session', 9);
-            $table->string('introduction', 1000);
+            $table->string('introduction', 1000)->nullable();
             $table->string('grading_information', 1000)->nullable();
             $table->timestamps();
         });

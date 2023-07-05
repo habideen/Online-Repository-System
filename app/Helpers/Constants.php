@@ -1,8 +1,10 @@
 <?php
 
+use App\Models\Session;
 
 define('TITLE', ['Mr', 'Mrs', 'Dr', 'Prof']);
 define('GENDER', ['M', 'F']);
+define('DB_UPDATE_ERROR', 'System error! Please try again later');
 
 
 if (!function_exists('auth_messages')) {
@@ -17,5 +19,15 @@ if (!function_exists('auth_messages')) {
     ];
 
     return (array_key_exists($message, $messages)) ? $messages[$message] : '';
+  }
+}
+
+
+if (!function_exists('currentSession')) {
+  function currentSession()
+  {
+    $session = Session::select('session')->latest()->first();
+
+    return $session->session ?? null;
   }
 }

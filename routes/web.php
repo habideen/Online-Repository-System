@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ManagementController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
@@ -46,7 +47,14 @@ Route::prefix('/admin')
         Route::get('/list/students', [UsersController::class, 'listUsers']);
 
         Route::get('/add_course', [CourseController::class, 'addCourseView']);
-        Route::get('/edit_course/{course_id}', [CourseController::class, 'addCourseView']);
+        Route::get('/edit_course/{course_code}', [CourseController::class, 'addCourseView']);
         Route::post('/create_or_update_course', [CourseController::class, 'addEditCourse']);
-        Route::get('/list/students', [CourseController::class, 'listCourse']);
+        Route::get('/list/courses', [CourseController::class, 'listCourse']);
+
+        Route::get('/instructor', [ManagementController::class, 'sessionCourseList']);
+        Route::get('/course_info/{course_code}/{session}', [ManagementController::class, 'courseInfo']);
+        Route::post('/update_instructor', [ManagementController::class, 'updateInstructor']);
+        Route::get('/update_session', [ManagementController::class, 'updateSessionView']);
+        Route::post('/update_session', [ManagementController::class, 'updateSession']);
+        Route::get('/update_session_courses', [ManagementController::class, 'updateSessionCourses']);
     });
