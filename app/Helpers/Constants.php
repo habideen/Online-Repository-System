@@ -5,6 +5,7 @@ use App\Models\Session;
 define('TITLE', ['Mr', 'Mrs', 'Dr', 'Prof']);
 define('GENDER', ['M', 'F']);
 define('DB_UPDATE_ERROR', 'System error! Please try again later');
+define('SERVER_ERROR', 'System error! Please try again later');
 
 
 if (!function_exists('auth_messages')) {

@@ -52,8 +52,10 @@ Route::prefix('/admin')
         Route::get('/list/courses', [CourseController::class, 'listCourse']);
 
         Route::get('/instructor', [ManagementController::class, 'sessionCourseList']);
-        Route::get('/course_info/{course_code}/{session}', [ManagementController::class, 'courseInfo']);
-        Route::post('/update_instructor', [ManagementController::class, 'updateInstructor']);
+        Route::get('/course_info', [ManagementController::class, 'courseInfoView']);
+        Route::post('/add_lecturer_to_course', [ManagementController::class, 'updateInstructor']);
+        Route::get('/set_course_cordinator', [ManagementController::class, 'setCourseCordinate']);
+        Route::get('/delete_course_instructor', [ManagementController::class, 'deleteCourseCordinate']);
         Route::get('/update_session', [ManagementController::class, 'updateSessionView']);
         Route::post('/update_session', [ManagementController::class, 'updateSession']);
         Route::get('/update_session_courses', [ManagementController::class, 'updateSessionCourses']);

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->string('course_code', 10)->primary();
             $table->string('course_title', 100);
+            $table->unsignedTinyInteger('unit');
             $table->uuid('added_by'); // normally registered by admin
             $table->timestamps();
         });

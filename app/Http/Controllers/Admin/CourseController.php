@@ -17,7 +17,8 @@ class CourseController extends Controller
         if ($course_code) {
             $course = Course::select(
                 'course_code',
-                'course_title'
+                'course_title',
+                'course_unit'
             )
                 ->where('course_code', $course_code)
                 ->first();
@@ -48,9 +49,6 @@ class CourseController extends Controller
             'edit_course_code' => ['nullable', 'exists:courses,course_code'],
             'course_code' => [
                 'required', 'regex:/^[A-Za-z]{3,3}[ ]*[0-9]{3,3}$/',
-                // Rule::unique('courses')
-                //     ->where('course_code', $course_code)
-                //     ->ignore($course_code, 'course_code')
                 function (string $attribute, mixed $value, Closure $fail) use ($request, $course_code) {
                     $check = Course::select('course_code')
                         ->where('course_code', $course_code)
@@ -61,7 +59,8 @@ class CourseController extends Controller
                     }
                 }
             ],
-            'course_title' => ['required', 'regex:/^[A-Za-z0-9 \(\)\-]{2,100}$/']
+            'course_title' => ['required', 'regex:/^[A-Za-z0-9 \(\)\-]{2,100}$/'],
+            'course_unit' => ['required', 'integer', 'min:0', 'max:99']
         ]);
 
         Session::remove('fail');
@@ -71,12 +70,14 @@ class CourseController extends Controller
             $save = Course::where('course_code', $request->edit_course_code)
                 ->update([
                     'course_code' => $course_code,
-                    'course_title' => preg_replace('/\s+/', ' ', $request->course_title)
+                    'course_title' => preg_replace('/\s+/', ' ', $request->course_title),
+                    'course_unit' => $request->course_unit
                 ]);
         } else {
             $save = new Course;
             $save->course_code = $course_code;
             $save->course_title = preg_replace('/\s+/', ' ', $request->course_title);
+            $save->course_unit = $request->course_unit;
             $save->added_by = Auth::user()->user_id;
             $save->save();
         }

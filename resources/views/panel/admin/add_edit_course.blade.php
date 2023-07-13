@@ -53,6 +53,14 @@ $titleTxt = Request::segment(2) == 'add_course' ? 'Add Course' : 'Edit Course';
                 <span class="text-danger">{{$message}}</span>
                 @enderror
               </div>
+              <div class="col-sm-6 col-md-5 form-group mb-4">
+                <label for="course_unit">Course Unit</label>
+                <input type="number" class="form-control" name="course_unit" id="course_unit" placeholder="e.g. 2"
+                  value="{{ old('course_unit') ?? $course->course_unit ?? '' }}" required='true' min="0" max="99">
+                @error('course_unit')
+                <span class="text-danger">{{$message}}</span>
+                @enderror
+              </div>
               <div class="col-sm-12 form-group mb-4">
                 <label for="course_title">Course Title</label>
                 <input type="text" class="form-control" name="course_title" id="course_title" placeholder=""

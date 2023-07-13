@@ -22,6 +22,7 @@
         </div>
       </div>
       <div class="card-body">
+
         @include('components.alert')
 
         <h3 class="mb-4">Current Session: <b>{{ currentSession() }}</b></h3>
@@ -30,9 +31,10 @@
           <thead>
             <tr>
               <th class="width80"><strong>#</strong></th>
-              <th><strong>COURSE CODE</strong></th>
-              <th><strong>COURSE TITLE</strong></th>
-              <th><strong>DATE CREATED</strong></th>
+              <th><strong>Code</strong></th>
+              <th><strong>Title</strong></th>
+              <th><strong>Unit</strong></th>
+              <th><strong>Date Created</strong></th>
               <th></th>
             </tr>
           </thead>
@@ -46,14 +48,15 @@
               <td>{{ $count++ }}</td>
               <td>{{ $course->course_code }}</td>
               <td>
-                <a href="/course_info/{{urlencode($course->course_code)}}/{{urlencode($course->session)}}"
+                <a href="/admin/course_info?course_code={{urlencode($course->course_code)}}&session={{urlencode($course->session)}}"
                   class="link">{{
                   $course->course_title
                   }}</a>
               </td>
+              <td>{{ $course->course_unit }}</td>
               <td>{{ date('d M, Y', strtotime($course->created_at)) }}</td>
               <td>
-                <a href="/course_info/{{urlencode($course->course_code)}}/{{urlencode($course->session)}}"
+                <a href="/admin/course_info?course_code={{urlencode($course->course_code)}}&session={{urlencode($course->session)}}"
                   class="btn btn-light light sharp">
                   <i class="flaticon-381-user-9"></i>
                 </a>
