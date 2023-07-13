@@ -16,7 +16,7 @@ class Instructor
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->account_type !== 'Lecturer') {
+        if (Auth::user()->account_type !== 'Instructor') {
             return redirect('/login');
         }
 

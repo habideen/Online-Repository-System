@@ -71,7 +71,7 @@ class ManagementController extends Controller
             'users.first_name',
             'users.middle_name'
         )
-            ->where('account_type', 'Lecturer')
+            ->where('account_type', 'Instructor')
             ->get();
 
         return view('panel.admin.course_info_instructor')->with([

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Instructor\DashboardController as InstructorDashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -65,5 +66,5 @@ Route::prefix('/admin')
 Route::prefix('/instructor')
     ->middleware(['auth', 'instructor'])
     ->group(function () {
-        //
+        Route::get('/', [InstructorDashboardController::class, 'index']);
     });

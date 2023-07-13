@@ -92,7 +92,7 @@ class UsersController extends Controller
             $save->phone_1 = $request->phone;
             $save->email = strtolower($request->email);
             $save->department_id = '1';
-            $save->account_type = 'Lecturer';
+            $save->account_type = 'Instructor';
             $save->enabled = '1';
             $save->password = Hash::make(Str::random(30));
             $save->save();
@@ -120,7 +120,7 @@ class UsersController extends Controller
         $user_type = substr($request->segment(3), 0, strlen($request->segment(3)) - 1);
         $user_type = ucwords($user_type);
 
-        if (!in_array($user_type, ['Lecturer', 'Student'])) {
+        if (!in_array($user_type, ['Instructor', 'Student'])) {
             return redirect()->back()->with([
                 'fail' => 'Unauthrized access'
             ]);
