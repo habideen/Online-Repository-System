@@ -37,7 +37,7 @@ Route::post('/logout', [LogoutController::class, 'logout']);
 
 
 Route::prefix('/admin')
-    ->middleware('auth')
+    ->middleware(['auth', 'admin'])
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index']);
         Route::get('/add_lecturer', [UsersController::class, 'addLecturerView']);
@@ -59,4 +59,11 @@ Route::prefix('/admin')
         Route::get('/update_session', [ManagementController::class, 'updateSessionView']);
         Route::post('/update_session', [ManagementController::class, 'updateSession']);
         Route::get('/update_session_courses', [ManagementController::class, 'updateSessionCourses']);
+    });
+
+
+Route::prefix('/instructor')
+    ->middleware(['auth', 'instructor'])
+    ->group(function () {
+        //
     });
