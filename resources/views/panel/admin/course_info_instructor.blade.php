@@ -33,6 +33,7 @@
           <h6 class="mb-3">Course Title: {{ $courseInfo->course_title }}</h6>
           <h6 class="mb-3">Course Code: {{ $courseInfo->course_code }}</h6>
           <h6 class="mb-3">Course Unit: {{ $courseInfo->course_unit }}</h6>
+          <h6 class="mb-3">Session: {{ $courseInfo->session }}</h6>
 
           <div class="d-flex mt-5">
             <h3>Instructors</h3>

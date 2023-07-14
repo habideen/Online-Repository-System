@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.instructor')
 
 @section('title') Courses @endsection
 
@@ -15,11 +15,8 @@
     </div>
     <!-- Card starts -->
     <div class="card">
-      <div class="card-header d-block d-flex">
-        <h4 class="card-title">List Courses</h4>
-        <div class="ms-auto">
-          <a href="/admin/update_session_courses" class="btn btn-dark">Refresh Session Courses</a>
-        </div>
+      <div class="card-header d-block">
+        <h4 class="card-title">Current Session Courses</h4>
       </div>
       <div class="card-body">
 
@@ -48,7 +45,7 @@
               <td>{{ $count++ }}</td>
               <td>{{ $course->course_code }}</td>
               <td>
-                <a href="/admin/course_info?course_code={{urlencode($course->course_code)}}&session={{urlencode($course->session)}}"
+                <a href="/instructor/course_info?course_code={{urlencode($course->course_code)}}&session={{urlencode($course->session)}}"
                   class="link">{{
                   $course->course_title
                   }}</a>
@@ -56,9 +53,9 @@
               <td>{{ $course->course_unit }}</td>
               <td>{{ date('d M, Y', strtotime($course->created_at)) }}</td>
               <td>
-                <a href="/admin/course_info?course_code={{urlencode($course->course_code)}}&session={{urlencode($course->session)}}"
+                <a href="/instructor/course_info?course_code={{urlencode($course->course_code)}}&session={{urlencode($course->session)}}"
                   class="btn btn-light light sharp">
-                  <i class="flaticon-381-user-9"></i>
+                  <i class="flaticon-381-menu-1"></i>
                 </a>
               </td>
             </tr>

@@ -678,7 +678,7 @@
     <!--**********************************
             Sidebar start
         ***********************************-->
-    @include('components.panel.admin-sidebar')
+    @include('components.panel.instructor-sidebar')
     <!--**********************************
             Sidebar end
         ***********************************-->

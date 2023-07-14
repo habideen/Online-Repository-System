@@ -6,7 +6,7 @@
         </div>
         <div class="vs-mobile-menu">
             <ul>
-                <li class="menu-item-has-children">
+                <li class="menu-item-has-children d-none">
                     <a href="index.html">Demos</a>
                     <ul class="sub-menu">
                         <li><a href="index.html">Demo Style 1</a></li>
@@ -15,7 +15,7 @@
                     </ul>
                 </li>
                 <li><a href="about.html">About Us</a></li>
-                <li class="menu-item-has-children">
+                <li class="menu-item-has-children d-none">
                     <a href="course.html">Courses</a>
                     <ul class="sub-menu">
                         <li><a href="course.html">Courses 1</a></li>
@@ -28,14 +28,14 @@
                         </li>
                     </ul>
                 </li>
-                <li class="menu-item-has-children">
+                <li class="menu-item-has-children d-none">
                     <a href="blog.html">Blog</a>
                     <ul class="sub-menu">
                         <li><a href="blog.html">Blog</a></li>
                         <li><a href="blog-details.html">Blog Details</a></li>
                     </ul>
                 </li>
-                <li class="menu-item-has-children">
+                <li class="menu-item-has-children d-none">
                     <a href="javascript: void(1)">Login / Register</a>
                     <ul class="sub-menu">
                         <li>
@@ -98,7 +98,7 @@
                     <div class="col text-end text-xl-center">
                         <nav class="main-menu menu-style1 d-none d-lg-block">
                             <ul>
-                                <li class="menu-item-has-children">
+                                <li class="menu-item-has-children d-none">
                                     <a href="index.html">Demos</a>
                                     <ul class="sub-menu">
                                         <li>
@@ -113,7 +113,7 @@
                                     </ul>
                                 </li>
                                 <li><a href="about.html">About Us</a></li>
-                                <li class="menu-item-has-children">
+                                <li class="menu-item-has-children d-none">
                                     <a href="course.html">Courses</a>
                                     <ul class="sub-menu">
                                         <li>
@@ -130,7 +130,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="menu-item-has-children">
+                                <li class="menu-item-has-children d-none">
                                     <a href="blog.html">Tutor</a>
                                     <ul class="sub-menu">
                                         <li>
@@ -147,7 +147,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="menu-item-has-children">
+                                <li class="menu-item-has-children d-none">
                                     <a href="javascript: void(1)">Login / Register</a>
                                     <ul class="sub-menu">
                                         <li>

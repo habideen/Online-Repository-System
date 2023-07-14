@@ -120,6 +120,10 @@ class UsersController extends Controller
         $user_type = substr($request->segment(3), 0, strlen($request->segment(3)) - 1);
         $user_type = ucwords($user_type);
 
+        if ($user_type == 'Lecturer') {
+            $user_type = 'Instructor';
+        }
+
         if (!in_array($user_type, ['Instructor', 'Student'])) {
             return redirect()->back()->with([
                 'fail' => 'Unauthrized access'

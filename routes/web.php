@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Instructor\DashboardController as InstructorDashboardController;
+use App\Http\Controllers\Instructor\ManageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -67,4 +68,7 @@ Route::prefix('/instructor')
     ->middleware(['auth', 'instructor'])
     ->group(function () {
         Route::get('/', [InstructorDashboardController::class, 'index']);
+        Route::get('/current_session', [ManageController::class, 'currentSession']);
+        Route::get('/course_info', [ManageController::class, 'courseInfoView']);
+        Route::post('/update_course_metadata', [ManageController::class, 'updateCourseMetadata']);
     });

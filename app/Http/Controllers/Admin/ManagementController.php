@@ -107,7 +107,7 @@ class ManagementController extends Controller
 
         if (!$save) {
             return redirect()->back()->with([
-                'fail' => 'System error! Please try again'
+                'fail' => SERVER_ERROR
             ]);
         }
 
