@@ -58,6 +58,20 @@ class ManageController extends Controller
 
 
 
+    public function allSessions()
+    {
+        $course_info = $this->getCourses()
+            ->where('course_infos.session', '!=', currentSession())
+            ->get();
+
+        return view('panel.instructor.course_info')->with([
+            'course_info' => $course_info
+        ]);
+    } // currentSession
+
+
+
+
     public function courseInfoView(Request $request)
     {
         $courseInfo =  CourseInfo::select(

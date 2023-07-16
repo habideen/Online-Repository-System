@@ -7,8 +7,10 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\Instructor\DashboardController as InstructorDashboardController;
 use App\Http\Controllers\Instructor\ManageController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,8 +25,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/test', function () {
-    return view('index');
+    return view('upload');
 });
+
+Route::any('/upload', function (Request $request) {
+    dd($request->all());
+});
+
+Route::get('/google', [GoogleController::class, 'google']);
 
 Route::get('/', function () {
     return view('index');
@@ -69,6 +77,7 @@ Route::prefix('/instructor')
     ->group(function () {
         Route::get('/', [InstructorDashboardController::class, 'index']);
         Route::get('/current_session', [ManageController::class, 'currentSession']);
+        Route::get('/all_session', [ManageController::class, 'allSessions']);
         Route::get('/course_info', [ManageController::class, 'courseInfoView']);
         Route::post('/update_course_metadata', [ManageController::class, 'updateCourseMetadata']);
     });
