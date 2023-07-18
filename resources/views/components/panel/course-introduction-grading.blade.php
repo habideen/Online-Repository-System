@@ -26,4 +26,34 @@
     </div>
   </div>
 </div>
+
+
+
+<div class="modal fade" id="gradingInfoModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Grading</h5>
+        <button type="button" class="close" data-bs-dismiss="modal"><span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="/instructor/update_course_metadata">
+          @csrf
+          <input type="hidden" name="course_info_id" value="{{ $courseInfo->course_info_id }}">
+          <div class="form-group">
+            <textarea class="form-control" rows="5" name="gradingInfoInput" placeholder="Type here"
+              id="gradingInfoInput">{{ old('gradingInfoInput') ?? $courseInfo->grading_information ?? '' }}</textarea>
+            @error('gradingInfoInput')
+            <span class="text-danger">{{$message}}</span>
+            @enderror
+          </div>
+          <div class="form-group mt-5">
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- End Modal -->

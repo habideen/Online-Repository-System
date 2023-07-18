@@ -79,6 +79,13 @@
 
           <hr class="mt-5 mb-5">
 
+          <div class="d-flex">
+            <div class="ms-auto">
+              <a href="/instructor/add_material?course_info_id={{ 
+                 $courseInfo->course_info_id . '&course_code=' . $courseInfo->course_code . '&session=' . $courseInfo->session}}"
+                class="btn btn-info">Add Course</a>
+            </div>
+          </div>
           <div class="mb-3">
             <h4>Course Information</h4>
             <span class="text-muted">Expand the headings below to edit them</span>
@@ -94,7 +101,7 @@
               <div id="flush-introduction" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
                 data-bs-parent="#courseInfoAccordion">
                 <div class="accordion-body">
-                  {{ $courseInfo->introduction }}
+                  <div class="markdownView">{{ $courseInfo->introduction }}</div>
                   <div class="mt-4">
                     <a href="javascript: void(0)" class="btn btn-primary light" data-bs-toggle="modal"
                       data-bs-target="#introductionModal">Update
@@ -102,7 +109,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div><!-- End accordion-item -->
             <div class="accordion-item">
               <h2 class="accordion-header" id="flush-headingOne">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -113,16 +120,39 @@
               <div id="flush-gradingInfo" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
                 data-bs-parent="#courseInfoAccordion">
                 <div class="accordion-body">
-                  {{ $courseInfo->grading_information }}
+                  <div class="markdownView">{{ $courseInfo->grading_information }}</div>
                   <div class="mt-4">
                     <a href="javascript: void(0)" class="btn btn-primary light" data-bs-toggle="modal"
-                      data-bs-target="#grading_information">Update
+                      data-bs-target="#gradingInfoModal">Update
                       Grading Information</a>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </div><!-- End accordion-item -->
+
+            @foreach ($materials as $material)
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-{{$material->id}}" aria-expanded="false" aria-controls="flush-collapseOne">
+                  {{$material->material_title}}
+                </button>
+              </h2>
+              <div id="flush-{{$material->id}}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                data-bs-parent="#courseInfoAccordion">
+                <div class="accordion-body">
+                  <div class="markdownView">{{ $material->material_information }}</div>
+                  <div class="mt-4">
+                    <a href="/instructor/edit_material?course_info_id={{ 
+                      $courseInfo->course_info_id . '&course_code=' . $courseInfo->course_code . '&session=' . $courseInfo->session
+                      . '&material_id=' . $material->id}}" class="btn btn-primary light">Update</a>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End accordion-item -->
+            @endforeach
+
+          </div><!-- End accordion accordion-flush -->
       </div>
       <!-- End card-body -->
     </div>
@@ -134,15 +164,29 @@
 
 
 @if ($isInstructor)
-@include('components.panel.update-course-introduction')
+@include('components.panel.course-introduction-grading')
 @endif
 @endsection
 
 
 @section('script')
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
 <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
   const easyMDE = new EasyMDE({element: document.getElementById('introductionInput')});
+  $('#introductionModal').on('shown.bs.modal', function () {
+    easyMDE.codemirror.refresh()
+  });
+
+  const easyMDEGrading = new EasyMDE({element: document.getElementById('gradingInfoInput')});
+  $('#gradingInfoModal').on('shown.bs.modal', function () {
+    easyMDEGrading.codemirror.refresh()
+  });
+
+  $('.markdownView').each(function(i, obj) {
+      $(this).html( marked.parse($(this).text()) )
+  });
 </script>
 @endsection

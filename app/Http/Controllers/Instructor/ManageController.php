@@ -5,10 +5,14 @@ namespace App\Http\Controllers\Instructor;
 use App\Http\Controllers\Controller;
 use App\Models\CourseInfo;
 use App\Models\CourseTutor;
+use App\Models\CourseUpload;
+use App\Models\Material;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class ManageController extends Controller
@@ -27,19 +31,6 @@ class ManageController extends Controller
             ->join('course_tutors', 'course_tutors.course_info_id', '=', 'course_infos.course_info_id')
             ->where('course_tutors.user_id', Auth::user()->user_id);
     } // getCourses
-
-
-
-
-    private function isInstructor($course_info_id)
-    {
-        return CourseTutor::select('id')
-            ->join('course_infos', 'course_infos.course_info_id', '=', 'course_tutors.course_info_id')
-            ->whereNotNull('course_tutors.is_cordinator')
-            ->where('course_tutors.user_id', Auth::user()->user_id)
-            ->where('course_infos.course_info_id', $course_info_id)
-            ->first();
-    } // isInstructor
 
 
 
@@ -105,11 +96,36 @@ class ManageController extends Controller
             ->where('course_tutors.course_info_id', $courseInfo->course_info_id)
             ->get();
 
+        $materials = CourseUpload::select(
+            'users.title',
+            'users.last_name',
+            'users.first_name',
+            'users.middle_name',
+            'course_uploads.id',
+            'course_uploads.title AS material_title',
+            'course_uploads.material_information',
+            'course_uploads.created_at',
+        )
+            ->join('users', 'users.user_id', '=', 'course_uploads.user_id')
+            ->where('course_uploads.course_info_id', $courseInfo->course_info_id)
+            ->get();
+        ////////////////////
+        $downloads = Material::select(
+            'title',
+            'link',
+            'isExternalLink',
+            'updated_at'
+        )
+            ->whereIn('id', $materials->pluck('id'))
+            ->get();
+
 
         return view('panel.instructor.course_info_instructor')->with([
             'instructors' => $instructors,
             'courseInfo' => $courseInfo,
-            'isInstructor' => $this->isInstructor($courseInfo->course_info_id)
+            'isInstructor' => isInstructor($courseInfo->course_info_id),
+            'materials' => $materials,
+            'downloads' => $downloads
         ]);
     } // courseInfoView
 
@@ -133,7 +149,7 @@ class ManageController extends Controller
         Session::remove('fail');
 
 
-        if (!$this->isInstructor($request->course_info_id)) {
+        if (!isInstructor($request->course_info_id)) {
             return redirect()->back()->with([
                 'fail' => 'You are not authorized to perform this action'
             ]);
@@ -161,4 +177,151 @@ class ManageController extends Controller
             'success' => 'The update was successful'
         ]);
     } // updateCourseMetadata
+
+
+
+
+    public function courseMaterialView(Request $request)
+    {
+        if (!isAuthorized($request->course_info_id, $request->course_code, $request->session)) {
+            return redirect()->back()->with([
+                'fail' => 'You are not authorized to view that course'
+            ]);
+        }
+
+        if ($request->material_id) {
+            $material = CourseUpload::select(
+                'course_uploads.id',
+                'course_uploads.title',
+                'course_uploads.material_information'
+            )
+                ->join('course_infos', 'course_infos.course_info_id', '=', 'course_uploads.course_info_id')
+                ->where('course_infos.course_code', $request->course_code)
+                ->where('course_infos.session', $request->session)
+                ->where('course_uploads.user_id', Auth::user()->user_id)
+                ->where('course_uploads.id', $request->material_id)
+                ->first();
+
+            if (!$material) {
+                return redirect()->back()->with([
+                    'fail' => 'You are not authorized to view that course'
+                ]);
+            }
+
+
+            $downloads = Material::select(
+                'id',
+                'title',
+                'link',
+                'isExternalLink'
+            )
+                ->whereIn('course_upload_id', $material->pluck('id'))
+                ->get();
+        }
+
+
+        return view('panel.instructor.add_edit_material')->with([
+            'material' => $material ?? null,
+            'downloads' => $downloads ?? null
+        ]);
+    } // courseMaterialView
+
+
+
+
+    public function courseMaterial(Request $request)
+    {
+        if (!isAuthorized($request->course_info_id, $request->course_code, $request->session)) {
+            return redirect()->back()->with([
+                'fail' => 'You are not authorized to view that course'
+            ]);
+        }
+
+        $request->validate([
+            'course_info_id' => ['required', 'integer', 'exists:course_infos'],
+            'title' => ['required', 'string', 'min:2', 'max:100'],
+            'information' => ['nullable', 'string', 'min:2', 'max:5000'],
+        ]);
+
+        $keys = $request->except('_token', 'course_info_id', 'information', 'course_code', 'session');
+        $keys = preg_grep('/^title-/', array_keys($keys));
+
+        $upload = [];
+
+        foreach ($keys as $title) {
+            $num = explode('-', $title)[1] ?? null;
+            if (!ctype_digit($num))
+                continue;
+
+            if ($request->get('title-' . $num)) {
+                if (!in_array($request->file('file-' . $num)->extension(), VALID_FILE_TYPE))
+                    continue;
+
+                array_push($upload, $num);
+            }
+        }
+
+
+        $materialInfo = new CourseUpload;
+        $materialInfo->course_info_id = $request->course_info_id;
+        $materialInfo->user_id = Auth::user()->user_id;
+        $materialInfo->title = $request->title;
+        $materialInfo->material_information = $request->information;
+        $materialInfo->save();
+
+
+        if (!$materialInfo) {
+            return redirect()->back()->with([
+                'fail' => SERVER_ERROR
+            ]);
+        }
+
+
+        $data = [];
+        $storageError = '';
+        foreach ($upload as $key) {
+            $fileName = $materialInfo->id . '_' . uuid_create() . '.'
+                . $request->file('file-' . $key)->extension();
+
+            $store = $request->file('file-' . $key)->storeAs('materials', $fileName);
+            if (!$store) {
+                $storageError .= $storageError ? ' .' . $request->get('title-' . $key) : $request->get('title-' . $key);
+                $storageError .= ' was not uploaded<br>';
+                continue;
+            }
+
+            $isExternalLink = null;
+
+            array_push($data, [
+                'course_upload_id' => $materialInfo->id,
+                'title' => $request->get('title-' . $key),
+                'link' => $fileName,
+                'isExternalLink' => $isExternalLink,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        }
+
+        $save = Material::insert($data);
+
+
+        if (!$save) {
+            CourseUpload::where('id', $materialInfo->id)->delete();
+            foreach ($data as $ele) {
+                if (!$ele['isExternalLink'])
+                    Storage::disk('local')->delete('materials/' . $ele['link']);
+            }
+
+            return redirect()->back()->with([
+                'fail' => 'Material information was saved and reversed. <br>' . SERVER_ERROR
+            ]);
+        }
+
+
+        return redirect('/instructor/course_info?course_code='
+            . urlencode($request->course_code) . '&session=' . urlencode($request->session))
+            ->with([
+                'success' => 'Material uploaded successfully'
+            ]);
+    } // courseMaterial
 }

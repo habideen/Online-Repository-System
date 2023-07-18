@@ -6,6 +6,7 @@ define('TITLE', ['Mr', 'Mrs', 'Dr', 'Prof']);
 define('GENDER', ['M', 'F']);
 define('DB_UPDATE_ERROR', 'System error! Please try again later');
 define('SERVER_ERROR', 'System error! Please try again later');
+define('VALID_FILE_TYPE', ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'png', 'gif', 'jpg', 'jpeg']);
 
 
 if (!function_exists('auth_messages')) {

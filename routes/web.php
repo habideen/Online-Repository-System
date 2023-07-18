@@ -80,4 +80,8 @@ Route::prefix('/instructor')
         Route::get('/all_session', [ManageController::class, 'allSessions']);
         Route::get('/course_info', [ManageController::class, 'courseInfoView']);
         Route::post('/update_course_metadata', [ManageController::class, 'updateCourseMetadata']);
+        Route::get('/add_material', [ManageController::class, 'courseMaterialView']);
+        Route::post('/add_material', [ManageController::class, 'courseMaterial']);
+        Route::get('/edit_material', [ManageController::class, 'courseMaterialView']);
+        Route::post('/edit_material', [ManageController::class, 'editCourseMaterial']);
     });
