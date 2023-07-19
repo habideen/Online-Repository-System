@@ -19,7 +19,7 @@
       </li>
       <li>
         <a class="has-arrow ai-icon" href="javascript:void(0);" aria-expanded="false">
-          <i class="flaticon-381-settings-4"></i>
+          <i class="flaticon-381-user-2"></i>
           <span class="nav-text">Settings</span>
         </a>
         <ul aria-expanded="false">

@@ -11,6 +11,7 @@ use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\Instructor\DashboardController as InstructorDashboardController;
 use App\Http\Controllers\Instructor\ManageController;
+use App\Http\Controllers\Shared\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -51,6 +52,9 @@ Route::prefix('/admin')
     ->middleware(['auth', 'admin'])
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index']);
+        Route::get('/profile', [ProfileController::class, 'index']);
+        Route::post('/profile', [ProfileController::class, 'update']);
+
         Route::get('/add_lecturer', [UsersController::class, 'addLecturerView']);
         Route::get('/edit_lecturer/{user_id}', [UsersController::class, 'addLecturerView']);
         Route::post('/create_or_update_lecturer', [UsersController::class, 'addEditLecturer']);
@@ -77,6 +81,9 @@ Route::prefix('/instructor')
     ->middleware(['auth', 'instructor'])
     ->group(function () {
         Route::get('/', [InstructorDashboardController::class, 'index']);
+        Route::get('/profile', [ProfileController::class, 'index']);
+        Route::post('/profile', [ProfileController::class, 'update']);
+
         Route::get('/current_session', [ManageController::class, 'currentSession']);
         Route::get('/all_session', [ManageController::class, 'allSessions']);
         Route::get('/course_info', [ManageController::class, 'courseInfoView']);

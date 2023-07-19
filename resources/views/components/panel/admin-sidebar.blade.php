@@ -38,6 +38,16 @@
           <li><a href="/admin/update_session">Update Current Session</a></li>
         </ul>
       </li>
+      <li>
+        <a class="has-arrow ai-icon" href="javascript:void(0);" aria-expanded="false">
+          <i class="flaticon-381-user-2"></i>
+          <span class="nav-text">Settings</span>
+        </a>
+        <ul aria-expanded="false">
+          <li><a href="/admin/profile">Profile Settings</a></li>
+          <li><a href="/admin/password">Password</a></li>
+        </ul>
+      </li>
     </ul>
   </div>
 </div>
