@@ -84,13 +84,13 @@ $titleTxt = Request::segment(2) == 'add_material' ? 'Add Material' : 'Edit Mater
               </div>
               <div class="col-md-6 mb-4 pb-3 col">
                 <div class="input-group">
-                  <input type="text" name="old-title-{{$download->id}}"
+                  <input type="text" name="old-link-{{$download->id}}"
                     class="form-control {{!$download->isExternalLink ? 'bg-light' : ''}}" maxlength="100" minlength="2"
                     value="{{$download->link}}" {{!$download->isExternalLink ? 'readonly' : ''}} required>
                   <div class="input-group-append">
                     <span class="input-group-text bg-danger text-white">
                       <i class="me-2">Delete</i>
-                      <input type="checkbox" name="delete-old" id="delete-old" value="{{$download->id}}"
+                      <input type="checkbox" name="delete-old-{{$download->id}}" id="delete-old-{{$download->id}}"
                         class="form-check-input">
                     </span>
                   </div>

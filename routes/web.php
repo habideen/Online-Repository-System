@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\Instructor\DashboardController as InstructorDashboardController;
 use App\Http\Controllers\Instructor\ManageController;
@@ -83,5 +84,6 @@ Route::prefix('/instructor')
         Route::get('/add_material', [ManageController::class, 'courseMaterialView']);
         Route::post('/add_material', [ManageController::class, 'courseMaterial']);
         Route::get('/edit_material', [ManageController::class, 'courseMaterialView']);
-        Route::post('/edit_material', [ManageController::class, 'editCourseMaterial']);
+        // Route::post('/edit_material', [ManageController::class, 'editCourseMaterial']);
+        Route::get('/download/material/{material_id}/{file}', [DownloadController::class, 'download']);
     });

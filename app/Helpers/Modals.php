@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\CourseTutor;
+use App\Models\CourseUpload;
 use Illuminate\Support\Facades\Auth;
 
 if (!function_exists('isAuthorized')) {
@@ -21,7 +22,7 @@ if (!function_exists('isAuthorized')) {
 
     return $isAuthorised->first();
   }
-} // isInstructor
+} // isAuthorized
 
 
 
@@ -36,4 +37,17 @@ if (!function_exists('isInstructor')) {
       ->where('course_infos.course_info_id', $course_info_id)
       ->first();
   }
-}// isInstructor
+} // isInstructor
+
+
+
+
+if (!function_exists('canEdit')) {
+  function canEdit($material_id)
+  {
+    return $canEdit = CourseUpload::select('id')
+      ->where('user_id', Auth::user()->user_id)
+      ->where('id', $material_id)
+      ->first();
+  }
+}// canEdit

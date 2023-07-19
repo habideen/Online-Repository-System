@@ -142,6 +142,17 @@
                 data-bs-parent="#courseInfoAccordion">
                 <div class="accordion-body">
                   <div class="markdownView">{{ $material->material_information }}</div>
+                  <div class="downloads mt-4">
+                    @php
+                    $filter = $downloads->where('course_upload_id', $material->id);
+                    @endphp
+                    @foreach ($filter as $download)
+                    <p class="mb-3">
+                      <a href="/instructor/download/material/{{$download->id}}/{{$download->link}}"><i
+                          class="fa fa-download me-2"></i>{{$download->title}}</a>
+                    </p>
+                    @endforeach
+                  </div>
                   <div class="mt-4">
                     <a href="/instructor/edit_material?course_info_id={{ 
                       $courseInfo->course_info_id . '&course_code=' . $courseInfo->course_code . '&session=' . $courseInfo->session
