@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ManagementController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\GoogleController;
@@ -48,12 +49,21 @@ Route::get('/logout', [LogoutController::class, 'logout']);
 Route::post('/logout', [LogoutController::class, 'logout']);
 
 
+
+// ADMIN ROUTES
+Route::middleware(['auth'])
+    ->group(function () {
+        Route::post('/update_password', [PasswordController::class, 'updatePassword'])->name('update_password');
+    });
+
+
 Route::prefix('/admin')
     ->middleware(['auth', 'admin'])
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index']);
         Route::get('/profile', [ProfileController::class, 'index']);
         Route::post('/profile', [ProfileController::class, 'update']);
+        Route::get('/update_password', [PasswordController::class, 'updatePasswordView']);
 
         Route::get('/add_lecturer', [UsersController::class, 'addLecturerView']);
         Route::get('/edit_lecturer/{user_id}', [UsersController::class, 'addLecturerView']);
@@ -83,6 +93,7 @@ Route::prefix('/instructor')
         Route::get('/', [InstructorDashboardController::class, 'index']);
         Route::get('/profile', [ProfileController::class, 'index']);
         Route::post('/profile', [ProfileController::class, 'update']);
+        Route::get('/update_password', [PasswordController::class, 'updatePasswordView']);
 
         Route::get('/current_session', [ManageController::class, 'currentSession']);
         Route::get('/all_session', [ManageController::class, 'allSessions']);

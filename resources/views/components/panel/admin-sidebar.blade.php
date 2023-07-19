@@ -45,7 +45,7 @@
         </a>
         <ul aria-expanded="false">
           <li><a href="/admin/profile">Profile Settings</a></li>
-          <li><a href="/admin/password">Password</a></li>
+          <li><a href="/admin/update_password">Password</a></li>
         </ul>
       </li>
     </ul>

@@ -24,7 +24,7 @@
         </a>
         <ul aria-expanded="false">
           <li><a href="/instructor/profile">Profile Settings</a></li>
-          <li><a href="/instructor/password">Password</a></li>
+          <li><a href="/instructor/update_password">Password</a></li>
         </ul>
       </li>
     </ul>
