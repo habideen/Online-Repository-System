@@ -48,6 +48,13 @@
           <li><a href="/admin/update_password">Password</a></li>
         </ul>
       </li>
+      <li>
+        <a href="javascript: void(0)" data-bs-toggle="modal" data-bs-target="#logoutModal" class="ai-icon"
+          aria-expanded="false">
+          <i class="flaticon-381-exit-1 text-danger"></i>
+          <span class="nav-text">Logout</span>
+        </a>
+      </li>
     </ul>
   </div>
 </div>

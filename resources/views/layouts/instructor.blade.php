@@ -54,19 +54,7 @@
         </div>
         <img class="logo-compact" src="/assets/img/oau_logo.png" alt="">
         <div class="brand-title">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="99"
-            height="30.000000pt" viewBox="0 0 636.99998 205.99999" xml:space="preserve">
-            <desc>Created with Fabric.js 5.3.0</desc>
-            <defs>
-            </defs>
-            <g transform="matrix(1 0 0 1 324.0803541036 102.999995)" style="" id="SyfiRmgklrJQ2E4aJBtgb">
-              <text xml:space="preserve" font-family="Potta One" font-size="160" font-style="normal"
-                font-weight="normal" line-height="1"
-                style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1; white-space: pre;">
-                <tspan x="-302.2149988324" y="61.6624">TSCDF.</tspan>
-              </text>
-            </g>
-          </svg>
+          <img src="/assets/img/logoText.png" class="img-fluid" alt="logo">
         </div>
       </a>
 
