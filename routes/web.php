@@ -123,3 +123,9 @@ Route::prefix('/student')
         Route::post('/profile', [ProfileController::class, 'update']);
         Route::get('/update_password', [PasswordController::class, 'updatePasswordView']);
     });
+
+
+Route::middleware(['auth'])
+    ->group(function () {
+        Route::get('/download/material/{material_id}/{file}', [DownloadController::class, 'download']);
+    });

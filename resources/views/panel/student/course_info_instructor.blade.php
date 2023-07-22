@@ -148,7 +148,7 @@
                     @endphp
                     @foreach ($filter as $download)
                     <p class="mb-3">
-                      <a href="/instructor/download/material/{{$download->id}}/{{$download->link}}"><i
+                      <a href="/download/material/{{$download->id}}/{{$download->link}}"><i
                           class="fa fa-download me-2"></i>{{$download->title}}</a>
                     </p>
                     @endforeach
