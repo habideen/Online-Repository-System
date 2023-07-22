@@ -6,6 +6,7 @@
   --title-color: #000000;
   --body-color: #444444;
   --smoke-color: #F3F3F3;
+  --disabled-color: #e2dbdb;
   --black-color: #000000;
   --white-color: #ffffff;
   --yellow-color: #fec624;
@@ -4390,9 +4391,22 @@ a.text-theme:hover,
   border-radius: 20px
 }
 
+.vs-pagination a.active {
+  background-color: var(--disabled-color);
+}
+
 .vs-pagination a:hover {
   color: var(--white-color);
   background-color: var(--theme-color)
+}
+
+.vs-pagination a.active {
+  background-color: var(--disabled-color);
+}
+
+.vs-pagination a.active:hover {
+  background-color: var(--disabled-color);
+  color: var(--black-color);
 }
 
 .vs-pagination .next a,
@@ -4407,9 +4421,21 @@ a.text-theme:hover,
   border-radius: 28px
 }
 
+.vs-pagination .next a.active,
+.vs-pagination .prev a.active {
+  background-color: var(--disabled-color);
+  color: var(--black-color);
+}
+
 .vs-pagination .next a:hover,
 .vs-pagination .prev a:hover {
   background-color: var(--theme-color2)
+}
+
+.vs-pagination .next a.active:hover,
+.vs-pagination .prev a.active:hover {
+  background-color: var(--disabled-color);
+  color: var(--black-color);
 }
 
 .post-pagination {

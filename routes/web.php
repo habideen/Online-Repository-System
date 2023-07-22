@@ -12,7 +12,12 @@ use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\Instructor\DashboardController as InstructorDashboardController;
 use App\Http\Controllers\Instructor\ManageController;
+use App\Http\Controllers\Public\AboutController;
+use App\Http\Controllers\Public\ContactController;
+use App\Http\Controllers\Public\CoursesController;
+use App\Http\Controllers\Public\IndexController;
 use App\Http\Controllers\Shared\ProfileController;
+use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,9 +42,12 @@ Route::any('/upload', function (Request $request) {
 
 Route::get('/google', [GoogleController::class, 'google']);
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [IndexController::class, 'index']);
+Route::get('/about_us', [AboutController::class, 'index']);
+Route::get('/contact_us', [ContactController::class, 'index']);
+Route::get('/courses', [CoursesController::class, 'index']);
+Route::get('/course_details', [CoursesController::class, 'courseDetails']);
+
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
@@ -104,4 +112,14 @@ Route::prefix('/instructor')
         Route::get('/edit_material', [ManageController::class, 'courseMaterialView']);
         // Route::post('/edit_material', [ManageController::class, 'editCourseMaterial']);
         Route::get('/download/material/{material_id}/{file}', [DownloadController::class, 'download']);
+    });
+
+
+Route::prefix('/student')
+    ->middleware(['auth', 'student'])
+    ->group(function () {
+        Route::get('/', [StudentDashboardController::class, 'index']);
+        Route::get('/profile', [ProfileController::class, 'index']);
+        Route::post('/profile', [ProfileController::class, 'update']);
+        Route::get('/update_password', [PasswordController::class, 'updatePasswordView']);
     });

@@ -6,6 +6,10 @@ $layout = 'instructor';
 @php
 $layout = 'admin';
 @endphp
+@elseif (Request::segment(1) == 'student')
+@php
+$layout = 'student';
+@endphp
 @endif
 
 {{-- This does not work inside the control statement --}}
@@ -119,6 +123,7 @@ $layout = 'admin';
 									@enderror
 								</div>
 
+								@if (Auth::user()->account_type != 'Student')
 								<div class="col-12 m-b30">
 									<label for="office_address">Office Address <span class="text-muted">(Optional)</span></label>
 									<input type="text" class="form-control" name="office_address" id="office_address" placeholder=""
@@ -128,6 +133,7 @@ $layout = 'admin';
 									<span class="text-danger">{{$message}}</span>
 									@enderror
 								</div>
+								@endif
 							</div>
 
 							<div class="card-footer">

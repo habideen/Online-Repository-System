@@ -2,51 +2,20 @@
     <div class="vs-menu-area text-center">
         <button class="vs-menu-toggle"><i class="fal fa-times"></i></button>
         <div class="mobile-logo">
-            <a href="index.html"><img src="/assets/img/oau_logo.png" alt="Educino" /></a>
+            <a href="/"><img src="/assets/img/logo.svg" alt="Educino" /></a>
         </div>
         <div class="vs-mobile-menu">
             <ul>
-                <li class="menu-item-has-children d-none">
-                    <a href="index.html">Demos</a>
+                <li><a href="/about_us">About Us</a></li>
+                <li><a href="/contact_us">Contact Us</a></li>
+                <li><a href="/courses">Courses</a></li>
+                <li class="menu-item-has-children"><a href="javascript: void(0)">Login & Register</a>
                     <ul class="sub-menu">
-                        <li><a href="index.html">Demo Style 1</a></li>
-                        <li><a href="index-2.html">Demo Style 2</a></li>
-                        <li><a href="index-3.html">Demo Style 3</a></li>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Register</a></li>
+                        <li><a href="/forgot_password">Forgot Password</a></li>
                     </ul>
                 </li>
-                <li><a href="about.html">About Us</a></li>
-                <li class="menu-item-has-children d-none">
-                    <a href="course.html">Courses</a>
-                    <ul class="sub-menu">
-                        <li><a href="course.html">Courses 1</a></li>
-                        <li><a href="courses-2.html">Courses 2</a></li>
-                        <li>
-                            <a href="course-details.html">Courses Details 1</a>
-                        </li>
-                        <li>
-                            <a href="course-details-2.html">Courses Details 2</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="menu-item-has-children d-none">
-                    <a href="blog.html">Blog</a>
-                    <ul class="sub-menu">
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="blog-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item-has-children d-none">
-                    <a href="javascript: void(1)">Login / Register</a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="/login">Login</a>
-                        </li>
-                        <li>
-                            <a href="/register">Register</a>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="contact.html">Contact Us</a></li>
             </ul>
         </div>
     </div>
@@ -92,73 +61,22 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-auto">
                         <div class="vs-logo">
-                            <a href="index.html"><img src="/assets/img/oau_logo.png" alt="logo" /></a>
+                            <a href="/"><img src="/assets/img/logo.svg" alt="logo" /></a>
                         </div>
                     </div>
                     <div class="col text-end text-xl-center">
                         <nav class="main-menu menu-style1 d-none d-lg-block">
                             <ul>
-                                <li class="menu-item-has-children d-none">
-                                    <a href="index.html">Demos</a>
+                                <li><a href="/about_us">About Us</a></li>
+                                <li><a href="/contact_us">Contact Us</a></li>
+                                <li><a href="/courses">Courses</a></li>
+                                <li class="menu-item-has-children"><a href="javascript: void(0)">Login & Register</a>
                                     <ul class="sub-menu">
-                                        <li>
-                                            <a href="index.html">Demo Style 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="index-2.html">Demo Style 2</a>
-                                        </li>
-                                        <li>
-                                            <a href="index-3.html">Demo Style 3</a>
-                                        </li>
+                                        <li><a href="/login">Login</a></li>
+                                        <li><a href="/register">Register</a></li>
+                                        <li><a href="/forgot_password">Forgot Password</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li class="menu-item-has-children d-none">
-                                    <a href="course.html">Courses</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="course.html">Courses 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="courses-2.html">Courses 2</a>
-                                        </li>
-                                        <li>
-                                            <a href="course-details.html">Course Details 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="course-details-2.html">Course Details 2</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children d-none">
-                                    <a href="blog.html">Tutor</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="team.html">Our Tutors</a>
-                                        </li>
-                                        <li>
-                                            <a href="team-details.html">Tutor Details</a>
-                                        </li>
-                                        <li>
-                                            <a href="become-tutor.html">Become Tutor</a>
-                                        </li>
-                                        <li>
-                                            <a href="find-tutor.html">Find Tutor</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children d-none">
-                                    <a href="javascript: void(1)">Login / Register</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="/login">Login</a>
-                                        </li>
-                                        <li>
-                                            <a href="/register">Register</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact.html">Contact Us</a></li>
                             </ul>
                         </nav>
                         <button class="vs-menu-toggle d-inline-block d-lg-none">

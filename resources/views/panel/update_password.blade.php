@@ -6,6 +6,10 @@ $layout = 'instructor';
 @php
 $layout = 'admin';
 @endphp
+@elseif (Request::segment(1) == 'student')
+@php
+$layout = 'student';
+@endphp
 @endif
 
 {{-- This does not work inside the control statement --}}

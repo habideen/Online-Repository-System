@@ -191,7 +191,7 @@ class ManageController extends Controller
             ]);
         }
 
-        if (!canEdit($request->material_id)) {
+        if ($request->material_id && !canEdit($request->material_id)) {
             return redirect()->back()->with([
                 'fail' => 'Sorry! That material doesn\'t belong to you. You cannot modify it.'
             ]);
@@ -245,10 +245,10 @@ class ManageController extends Controller
             ]);
         }
 
-        if (!canEdit($request->material_id)) {
+        if ($request->material_id && !canEdit($request->material_id)) {
             return redirect()->back()->with([
                 'fail' => 'Sorry! That material doesn\'t belong to you. You cannot modify it.'
-            ]);
+            ])->withInput($request->all());
         }
 
         $request->validate([

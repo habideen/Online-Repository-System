@@ -1,0 +1,29 @@
+.float-input-container {
+  position: relative;
+}
+
+.float-input-box {
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+.float-input-placeholder {
+  position: absolute;
+  top: 12px;
+  left: 10px;
+  padding: 2px 7px 0 7px;
+  color: #999;
+  pointer-events: none;
+  transition: 0.3s;
+  background-color: transparent;
+}
+
+.float-input-box:focus+.float-input-placeholder,
+.float-input-box:not(:placeholder-shown)+.float-input-placeholder {
+  font-size: 14px;
+  top: -15px;
+  background-color: #fff;
+  border-radius: 10px;
+}
